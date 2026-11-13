@@ -9,13 +9,20 @@
 - Будущий продакшн-URL: https://2026ag.github.io/CHESS/
 - Node v22.22.3 / npm 10.9.8 — удовлетворяет требованию Node ≥ 20 для CI
 
+## Compatibility Spike (Шаг 1, 2026-11-13) — ПРОЙДЕН без отката
+
+Vite 8.3 + React 19.3.1 + TypeScript 7 + @react-three/fiber 9.8.2 + drei 10.7.9
++ three 0.187: установка без peer-конфликтов, production-build зелёный,
+3D-сцена вынесена в ленивый чанк (934 KB, в главный бандл не входит;
+главный JS — 260 KB / 83 KB gzip). Откат на React 18 не потребовался.
+
 ## Запланированные компоненты (добавляются на своих шагах)
 
 | Компонент | Версия | Лицензия | Шаг | Примечание |
 |---|---|---|---|---|
-| Stockfish (lite, single-thread) | 17.1 | GPL-3.0 | 1 | js+wasm в `/public/stockfish/`, здесь фиксируется SHA-256 |
-| chess.js | ^1.4 | BSD-2-Clause | 1 | Единственный арбитр правил |
-| PeerJS | ^1.5 | MIT | 7 | Default broker — best-effort, без SLA |
+| Stockfish 19 lite-single (npm `stockfish@19.0.1`) | 19.0.1 | GPL-3.0 | 1 | `/public/stockfish/stockfish-19-lite-single.{js,wasm}`; SHA-256 js `ccb130d7…f624c91a`, wasm `ee4f115b…71f096de` |
+| chess.js | ^1.4.0 (установлена) | BSD-2-Clause | 1 | Единственный арбитр правил |
+| PeerJS | ^1.5.5 (установлена) | MIT | 7 | Default broker — best-effort, без SLA |
 | lichess chess-openings (подмножество) | — | CC0 | 2 | Генерация `src/data/openings.json` скриптом |
 
 ## Собственные / процедурные ассеты
